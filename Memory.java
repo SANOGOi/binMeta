@@ -367,5 +367,49 @@ public class Memory
       }
       return removed;
    }
+
+   // getBest (gives null when Memory is empty)
+   public Data getBest()
+   {
+      Data bestData = null;
+      if (this.n > 0)
+      {
+         double bestValue = Double.MAX_VALUE;
+         for (int i = 0; i < this.capacity; i++)
+         {
+            if (this.data[i] != null && this.value[i] != null)
+            {
+               if (this.value[i] < bestValue)
+               {
+                  bestData = this.data[i];
+                  bestValue = this.value[i];
+               }
+            }
+         }
+      }
+      return bestData;
+   }
+
+   // getWorst (gives null when Memory is empty)
+   public Data getWorst()
+   {
+      Data worstData = null;
+      if (this.n > 0)
+      {
+         double worstValue = -Double.MAX_VALUE;
+         for (int i = 0; i < this.capacity; i++)
+         {
+            if (this.data[i] != null && this.value[i] != null)
+            {
+               if (this.value[i] > worstValue)
+               {
+                  worstData = this.data[i];
+                  worstValue = this.value[i];
+               }
+            }
+         }
+      }
+      return worstData;
+   }
 }
 

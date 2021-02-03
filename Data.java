@@ -1101,115 +1101,68 @@ public class Data implements Comparable<Data>
       int h = 1 + R.nextInt(6);
       System.out.println("randomSelectInNeighbour(" + h + "," + h + ") ==> " + D02.randomSelectInNeighbour(h,h));
 
+      System.out.println();
+
       System.out.println("Tested by Issa SANOGO: hammingDistanceTo, randomSelectInNeighbour, diff, Control");
       int nbOfTest =100;
       boolean testOk = false;
       int j = 0;
       while (j < nbOfTest){
-         int n = 1+ R.nextInt(10);
+         int n = 1 + R.nextInt(10);
          boolean bit = R.nextBoolean();
          int lu = 1 + R.nextInt(6);
+         double p = R.nextDouble();
+         System.out.println("Ok...");
+        // if(bit){
+            System.out.println("appel" + j);
+            System.out.println("valeur de n " + n);
+            System.out.println("valeur de lu " + lu);
 
-         if(n == 10 && bit){
             Data A = new Data(n, bit);
             Data B = new Data(n, bit);
-
+            System.out.println("Avant" + A);
             Data A1 = A.randomSelectInNeighbour(lu);
-            Data B1 = B.randomSelectInNeighbour(lu);
+             System.out.println("Après");
+
+            /*Data B1 = B.randomSelectInNeighbour(lu);
+            //Control(D, true, 0) tous les bits qui sont à 1(=true) dans A1 deviennent 0(=p=0)
+            Data Aa1 = Data.control(A1, bit, p);
+            //Control(D, true, 1) tous les bits qui sont à 1(=true) dans B1 restent inchangés(=p=1)
+            Data Aa2 = Data.control(A1, bit, p);
+
 
             int d = A1.hammingDistanceTo(B1);
             Data diff = Data.diff(A1, B1);
             int e = diff.numberOfOnes();
 
             if (d == e) testOk = true;
-         }
+            if (!Aa1.equals(Aa2)) testOk = true;
+        // }else {
+            System.out.println("else..." + n);
 
-         if (n == 10 && !bit){
             Data C = new Data(n, bit);
             Data D = new Data(n, bit);
 
             Data C1 = C.randomSelectInNeighbour(lu, lu);
             Data D1 = D.randomSelectInNeighbour(lu, lu);
+            //Control(D, false, 0) tous les bits qui sont à 0(=false) dans C1 deviennent 1(=p=0)
+            Data Cc1 = Data.control(C1, bit, p);
+            //Control(D, false, 1) tous les bits qui sont à 0(false) dans C1 restent inchangés(=p=1)
+            Data Cc2 = Data.control(C1, bit, p);
 
             int d = C1.hammingDistanceTo(D1);
             Data diff = Data.diff(C1, D1);
             int e = diff.numberOfOnes();
 
             if (d == e) testOk = true;
+            if (!Cc1.equals(Cc2)) testOk = true;*/
 
-         }
+        // }
          j++;
          System.out.println(testOk);
 
       }
-
-
-      /*Data testDiff1 = Data.diff(D01, D02);
-      Data resExpect1 = new Data(10, true);
-      if(resExpect1.equals(testDiff1))
-         System.out.println("TestDiff1 ok");
-      else
-         System.out.println("TestDiff1 no ok");
-
-      Data D23 = new Data("0000000000");
-      Data testDiff2 = Data.diff(D23, D23);
-      Data resExpect2 = new Data("0000000000");
-      if(resExpect2.equals(testDiff2))
-         System.out.println("TestDiff2 ok");
-      else
-         System.out.println("TestDiff2 no ok");
-
-      Data D24 = new Data("0101010101");
-      Data D25 = new Data("1010101010");
-      Data testDiff3 = Data.diff(D24, D25);
-      Data resExpect3 = new Data("1111111111");
-      if(resExpect3.equals(testDiff3))
-         System.out.println("TestDiff3 ok");
-      else
-         System.out.println("TestDiff3 no ok");
-
-      Data D26 = new Data("0101010101");
-      Data D27 = new Data("1000001111");
-      Data testDiff4 = diff(D26, D27);
-      Data resExpect4 = new Data("1101011010");
-      if(resExpect4.equals(testDiff4))
-         System.out.println("TestDiff4 ok");
-      else
-         System.out.println("TestDiff4 no ok");
-
-      //Control(D, false, 1) tous les bits qui sont à 0(false) dans D restent inchangés(=p=1)
-      //Control(D, false, 0) tous les bits qui sont à 0(=false) dans D deviennent 1(=p=0)
-      //Control(D, true, 1) tous les bits qui sont à 1(=true) dans D restent inchangés(=p=1)
-      //Control(D, true, 0) tous les bits qui sont à 1(=true) dans D deviennent 1(=p=0)
-      Data D28 = new Data("0000011111");
-      Data D29 = new Data("1111111111");
-      Data testControl1 = Data.control(D28, false, 1.0);
-      Data testControl2 = Data.control(D28, false, 0.0);
-      if(D28.equals(testControl1))
-         System.out.println("testControl1 ok");
-      else
-         System.out.println("testControl1 no ok");
-
-      if(D29.equals(testControl2))
-         System.out.println("testControl2 ok");
-      else
-         System.out.println("testControl2 no ok");
-
-      Data D30 = new Data("1010101010");
-      Data D31 = new Data("0000000000");
-      Data testControl3 = Data.control(D30, true, 1.0);
-      Data testControl4 = Data.control(D30, true, 0.0);
-      if(D30.equals(testControl3))
-         System.out.println("testControl3 ok");
-      else
-         System.out.println("testControl3 no ok");
-
-      if(D31.equals(testControl4))
-         System.out.println("testControl4 ok");
-      else
-         System.out.println("testControl4 no ok");*/
-
-      System.out.println("------------------Mes tests Fin------------------");
+      System.out.println("Tested by Issa SANOGO End: hammingDistanceTo, randomSelectInNeighbour, diff, Control");
 
       System.out.println();
 
